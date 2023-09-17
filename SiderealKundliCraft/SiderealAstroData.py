@@ -38,7 +38,7 @@ class Date:
         self.utc_offset_hours   = utc_offset_hours
         self.utc_offset_minutes = utc_offset_minutes
 
-class Kundli:
+class AstroData:
     def __init__(self, year:int, month:int, day:int, hour:int, minute:int, second:int, 
                  utc_offset_hours:int, utc_offset_minutes:int, latitude:float, longitude:float, ayan="ay_lahiri"):
         """   

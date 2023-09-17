@@ -9,7 +9,7 @@ with open("README.md", "r") as opn:
 setup(
     # Project
     name='SiderealKundliCraft',
-    version='1.0.0',
+    version='1.1.0',
     
     # Sources
     packages=find_packages(),

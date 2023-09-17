@@ -1,4 +1,4 @@
-from SiderealKundliCraft import SiderealKundli, chart
+from SiderealKundliCraft import SiderealAstroData, chart
 
 if __name__ == "__main__":
     # Example UTC: +5:30 which is used by India
@@ -15,7 +15,7 @@ if __name__ == "__main__":
     latitude = 19.0760
     longitude =  72.8777
     ayanamsa = "ay_lahiri"
-    data = SiderealKundli.Kundli(year, month, day, hour, minute, second, utc_hour, utc_minute, latitude, longitude, ayan=ayanamsa)
+    data = SiderealAstroData.AstroData(year, month, day, hour, minute, second, utc_hour, utc_minute, latitude, longitude, ayan=ayanamsa)
     kundli = chart.Chart(data.planets_rashi()).lagnaChart() # returns list with all the houses in Lagna Chart
     # kundli[0] = house 1      
     # kundli[1] = house 2   
