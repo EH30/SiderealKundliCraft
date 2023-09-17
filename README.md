@@ -7,8 +7,22 @@ SiderealKundliCraft is a simple Python package designed for astrology enthusiast
 from SiderealKundliCraft import SiderealKundli, chart
 
 if __name__ == "__main__":
-    data = SiderealKundli.Kundli(2009, 3, 30, 9, 30, 0, 5, 30, 19.0760, 72.8777, ayan="ay_lahiri")
-    kundli = chart.Chart(data.planets_rashi()).lagnaChart()
+    # Example UTC: +5:30 which is used by India
+    # Example Location Mumbai India latitude: 19.0760 and Longitude: 72.8777 
+    # Year: 2009 Month: 3  Day: 30 Hour: 9 Minute: 36 Second: 0 utc_hour: 5 utc_minute: 30 latitude: 19.0760 Longitude: 72.8777 ayanamsa: ay_lahiri 
+    year  = 2009
+    month = 3
+    day = 30
+    hour = 9
+    minute = 36
+    second = 0
+    utc_hour = 5
+    utc_minute = 30
+    latitude = 19.0760
+    longitude =  72.8777
+    ayanamsa = "ay_lahiri"
+    data = SiderealKundli.Kundli(year, month, day, hour, minute, second, utc_hour, utc_minute, latitude, longitude, ayan=ayanamsa)
+    kundli = chart.Chart(data.planets_rashi()).lagnaChart() # returns list with all the houses in Lagna Chart
     # kundli[0] = house 1      
     # kundli[1] = house 2   
     # ...   
@@ -29,21 +43,21 @@ if __name__ == "__main__":
 #       
 ```   
 # Output: 
-# Asc Signlon:  6
-# Asc minute:  2
-# Asc sec:  30
-# Asc: 6:2:30
-# house: 1 sign_num: 2 planet: {'MOON': {'signlon': 0, 'minute': 22, 'second': 26, 'lon': 30.374020847229794, 'retrograde': False}}
+# Asc Signlon:  7
+# Asc minute:  36
+# Asc sec:  23
+# Asc: 7:36:23
+# house: 1 sign_num: 2 planet: {'MOON': {'signlon': 0, 'minute': 25, 'second': 57, 'lon': 30.43269224654518, 'retrograde': False}}
 # house: 2 sign_num: 3 planet: {}
-# house: 3 sign_num: 4 planet: {'KETU': {'signlon': 12, 'minute': 18, 'second': 14, 'lon': 102.30407210529324, 'retrograde': True}}
-# house: 4 sign_num: 5 planet: {'SATURN': {'signlon': 22, 'minute': 45, 'second': 33, 'lon': 142.75927901924277, 'retrograde': True}}
+# house: 3 sign_num: 4 planet: {'KETU': {'signlon': 12, 'minute': 18, 'second': 13, 'lon': 102.30385130530328, 'retrograde': True}}
+# house: 4 sign_num: 5 planet: {'SATURN': {'signlon': 22, 'minute': 45, 'second': 32, 'lon': 142.75898718206952, 'retrograde': True}}
 # house: 5 sign_num: 6 planet: {}
 # house: 6 sign_num: 7 planet: {}
 # house: 7 sign_num: 8 planet: {}
-# house: 8 sign_num: 9 planet: {'PLUTO': {'signlon': 9, 'minute': 18, 'second': 8, 'lon': 249.30235776590413, 'retrograde': False}}
-# house: 9 sign_num: 10 planet: {'JUPITER': {'signlon': 24, 'minute': 45, 'second': 55, 'lon': 294.7652798639882, 'retrograde': False}, 'RAHU': {'signlon': 12, 'minute': 18, 'second': 14, 'lon': 282.30407210529324, 'retrograde': True}}
-# house: 10 sign_num: 11 planet: {'MARS': {'signlon': 17, 'minute': 46, 'second': 34, 'lon': 317.77631081211916, 'retrograde': False}, 'URANUS': {'signlon': 29, 'minute': 35, 'second': 7, 'lon': 329.5853325776043, 'retrograde': False}, 'NEPTUNE': {'signlon': 1, 'minute': 32, 'second': 57, 'lon': 301.54924666197826, 'retrograde': False}}
-# house: 11 sign_num: 12 planet: {'SUN': {'signlon': 15, 'minute': 36, 'second': 6, 'lon': 345.60193267617626, 'retrograde': False}, 'MERCURY': {'signlon': 14, 'minute': 35, 'second': 13, 'lon': 344.58717542538943, 'retrograde': False}, 'VENUS': {'signlon': 11, 'minute': 47, 'second': 46, 'lon': 341.7961896197394, 'retrograde': True}}
+# house: 8 sign_num: 9 planet: {'PLUTO': {'signlon': 9, 'minute': 18, 'second': 8, 'lon': 249.30237002216532, 'retrograde': False}}
+# house: 9 sign_num: 10 planet: {'JUPITER': {'signlon': 24, 'minute': 45, 'second': 57, 'lon': 294.76607252592436, 'retrograde': False}, 'RAHU': {'signlon': 12, 'minute': 18, 'second': 13, 'lon': 282.3038513053033, 'retrograde': True}}
+# house: 10 sign_num: 11 planet: {'MARS': {'signlon': 17, 'minute': 46, 'second': 46, 'lon': 317.77956968504066, 'retrograde': False}, 'URANUS': {'signlon': 29, 'minute': 35, 'second': 8, 'lon': 329.5855638533189, 'retrograde': False}, 'NEPTUNE': {'signlon': 1, 'minute': 32, 'second': 57, 'lon': 301.54936905595946, 'retrograde': False}}
+# house: 11 sign_num: 12 planet: {'SUN': {'signlon': 15, 'minute': 36, 'second': 21, 'lon': 345.6060505603411, 'retrograde': False}, 'MERCURY': {'signlon': 14, 'minute': 35, 'second': 44, 'lon': 344.59557987848166, 'retrograde': False}, 'VENUS': {'signlon': 11, 'minute': 47, 'second': 37, 'lon': 341.7936220400737, 'retrograde': True}}
 # house: 12 sign_num: 1 planet: {}
 
 ```   
@@ -91,6 +105,7 @@ data = SiderealKundli.Kundli(year, month, day, hour, minute, second,
 #    
 ```
 kundli = chart.Chart(data.planets_rashi())
+kundli.lagnaChart() # returns list with all the houses in Lagna Chart
 ```
 
 # Installl

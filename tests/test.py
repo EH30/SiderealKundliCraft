@@ -1,8 +1,22 @@
 from SiderealKundliCraft import SiderealKundli, chart
 
 if __name__ == "__main__":
-    data = SiderealKundli.Kundli(2009, 3, 30, 9, 30, 0, 5, 30, 19.0760, 72.8777, ayan="ay_lahiri")
-    kundli = chart.Chart(data.planets_rashi()).lagnaChart()
+    # Example UTC: +5:30 which is used by India
+    # Example Location Mumbai India latitude: 19.0760 and Longitude: 72.8777 
+    # Year: 2009 Month: 3  Day: 30 Hour: 9 Minute: 36 Second: 0 utc_hour: 5 utc_minute: 30 latitude: 19.0760 Longitude: 72.8777 ayanamsa: ay_lahiri 
+    year  = 2009
+    month = 3
+    day = 30
+    hour = 9
+    minute = 36
+    second = 0
+    utc_hour = 5
+    utc_minute = 30
+    latitude = 19.0760
+    longitude =  72.8777
+    ayanamsa = "ay_lahiri"
+    data = SiderealKundli.Kundli(year, month, day, hour, minute, second, utc_hour, utc_minute, latitude, longitude, ayan=ayanamsa)
+    kundli = chart.Chart(data.planets_rashi()).lagnaChart() # returns list with all the houses in Lagna Chart
     # kundli[0] = house 1      
     # kundli[1] = house 2   
     # ...   
@@ -18,5 +32,4 @@ if __name__ == "__main__":
             print("Asc sec: ", kundli[house].asc_second)
             print("Asc: {0}:{1}:{2}".format(kundli[house].asc_signlon, kundli[house].asc_minute, kundli[house].asc_second))
         print("house: {0} sign_num: {1} planet: {2}".format(house+1, kundli[house].sign_num, kundli[house].planet))
-
 
