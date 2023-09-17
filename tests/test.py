@@ -2,7 +2,14 @@ from SiderealKundliCraft import SiderealKundli
 
 if __name__ == "__main__":
     kundli = SiderealKundli.Kundli(2009, 3, 30, 9, 30, 0, 5, 30, 19.0760, 72.8777, ayan="ay_lahiri").lagnaChart()
-    
+    # kundli[0] = house 1      
+    # ...  
+    # ...   
+    # ...   
+    # kundli[11] = house 12
+
+    # kundli[0].sign_num returns rashi sign in first house.   
+    # kundli[0].planets returns dict with all the planet information in first house.
     for house in range(len(kundli)):
         if house == 0:
             print("Asc Signlon: ", kundli[house].asc_signlon)

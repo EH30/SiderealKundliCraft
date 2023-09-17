@@ -28,7 +28,7 @@ PLANETS = {
 }
 
 class Date:
-    def __init__(self, year, month, day, hour, minute, second,  utc_offset_hours, utc_offset_minutes):
+    def __init__(self, year:int, month:int, day:int, hour:int, minute:int, second:int,  utc_offset_hours:int, utc_offset_minutes:int):
         self.year   = year
         self.month  = month
         self.day    = day
@@ -48,8 +48,8 @@ class DataHouse:
         self.planet          = {}
 
 class Kundli:
-    def __init__(self, year, month, day, hour, minute, second, 
-                 utc_offset_hours, utc_offset_minutes, latitude, longitude, ayan="ay_lahiri"):
+    def __init__(self, year:int, month:int, day:int, hour:int, minute:int, second:int, 
+                 utc_offset_hours:int, utc_offset_minutes:int, latitude:float, longitude:float, ayan="ay_lahiri"):
         """   
         arguments: 
         - year: birth year
@@ -66,11 +66,11 @@ class Kundli:
         """
         date = Date(year, month, day, hour, minute, second, utc_offset_hours, utc_offset_minutes)
         self.juld = JulianDate.JulianDate(date).date_utc_to_julian()
-        self.ayan = ayan
+        self.ayan = ayan.lower()
         self.latitude  = latitude
         self.longitude = longitude
     
-    def degree_minute_second(self, lon):
+    def degree_minute_second(self, lon:float):
         """calculate degree minute and second"""
         deg = lon % 30
         minutes = int((lon - int(lon)) * 60)

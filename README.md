@@ -70,6 +70,13 @@ ayanamsa you can use:
 "ay_aldebaran_15tau"  
 "ay_galcenter_5sag"      
    
+# 
+```kundli[0].asc_signlon```: returns the ascendant degree    
+```kundli[0].asc_minute```: returns the ascendant minute    
+```kundli[0].asc_second```: returns the ascendant second   
+
+```kundli[0].sign_num```: returns sign number in the first house    
+```kundli[0].planet```:   returns dict with planet information in the first house
 
 # Installl
 ```   
