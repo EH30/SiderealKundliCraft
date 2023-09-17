@@ -71,7 +71,6 @@ class AstroData:
         output = {}
         output["Asc"] = {"sign_num":int(ascendant/30)+1, "lon":ascendant}
         xx, ret = swe.calc_ut(self.juld, PLANETS["SUN"], flags)
-        sun = xx[0]
 
         for planet in PLANETS:
             xx, ret = swe.calc_ut(self.juld, PLANETS[planet], flags)
