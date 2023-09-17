@@ -1,6 +1,6 @@
 # SiderealKundliCraft
      
-SiderealKundliCraft is a simple Python package designed for astrology enthusiasts. This package empowers users to calculate Lagna Kundli (also known as birth charts) and determine planetary positions within the zodiac signs, adhering to the sidereal system.   
+SiderealKundliCraft is a simple Python package designed for astrology enthusiasts. This package empowers users to calculate charts and determine planetary positions within the zodiac signs, adhering to the sidereal system.   
 
 # Example
 ```
@@ -47,14 +47,9 @@ if __name__ == "__main__":
 # house: 12 sign_num: 1 planet: {}
 
 ```   
-   
-#  
-```  
-SiderealKundli.Kundli(year, month, day, hour, minute, second, 
-                 utc_offset_hours, utc_offset_minutes, latitude, longitude, ayan="lahiri")   
-```
-returns a list with all the houses.   
-example:   
+
+
+#   
 kundli[0] = house 1      
 kundli[1] = house 2  
 ...   
@@ -86,7 +81,18 @@ ayanamsa you can use:
 - ```chart.Chart(data.planets_rashi()).lagnaChart()```: returns Lagna Chart    
 - ```chart.Chart(data.planets_rashi()).moonChart()```: returns Moon Chart   
 #
+
    
+```  
+data = SiderealKundli.Kundli(year, month, day, hour, minute, second, 
+                 utc_offset_hours, utc_offset_minutes, latitude, longitude, ayan="lahiri")   
+```
+
+#    
+```
+kundli = chart.Chart(data.planets_rashi())
+```
+
 # Installl
 ```   
 pip install SiderealKundliCraft

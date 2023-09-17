@@ -33,7 +33,7 @@ setup(
     # Classifiers
     classifiers=[
         'Programming Language :: Python :: 3',
-        'License :: OSI Approved :: Freely Distributable',
+        'License :: Freely Distributable',
         'Operating System :: OS Independent',
         'Development Status :: 5 - Production/Stable',
         'Environment :: Other Environment',
