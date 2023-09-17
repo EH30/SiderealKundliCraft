@@ -1,17 +1,18 @@
-from SiderealKundliCraft import SiderealKundli
+from SiderealKundliCraft import SiderealKundli, chart
 
 if __name__ == "__main__":
-    kundli = SiderealKundli.Kundli(2009, 3, 30, 9, 30, 0, 5, 30, 19.0760, 72.8777, ayan="ay_lahiri").lagnaChart()
+    data = SiderealKundli.Kundli(2009, 3, 30, 9, 30, 0, 5, 30, 19.0760, 72.8777, ayan="ay_lahiri")
+    kundli = chart.Chart(data.planets_rashi()).lagnaChart()
     # kundli[0] = house 1      
-    # ...  
+    # kundli[1] = house 2   
     # ...   
     # ...   
     # kundli[11] = house 12
 
     # kundli[0].sign_num returns rashi sign in first house.   
-    # kundli[0].planets returns dict with all the planet information in first house.
+    # kundli[0].planets returns dict with all the planet information in first house.   
     for house in range(len(kundli)):
-        if house == 0:
+        if kundli[house].is_ascendant == True:
             print("Asc Signlon: ", kundli[house].asc_signlon)
             print("Asc minute: ", kundli[house].asc_minute)
             print("Asc sec: ", kundli[house].asc_second)

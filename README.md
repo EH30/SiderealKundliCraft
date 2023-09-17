@@ -5,25 +5,27 @@ SiderealKundliCraff is a simple Python package designed for astrology enthusiast
 
 # Example
 ```
-from SiderealKundliCraft import SiderealKundli
+from SiderealKundliCraft import SiderealKundli, chart
 
 if __name__ == "__main__":
-    kundli = SiderealKundli.Kundli(2009, 3, 30, 9, 30, 0, 5, 30, 19.0760, 72.8777).lagnaChart()
+    data = SiderealKundli.Kundli(2009, 3, 30, 9, 30, 0, 5, 30, 19.0760, 72.8777, ayan="ay_lahiri")
+    kundli = chart.Chart(data.planets_rashi()).lagnaChart()
     # kundli[0] = house 1      
-    # ...  
+    # kundli[1] = house 2   
     # ...   
     # ...   
     # kundli[11] = house 12
 
     # kundli[0].sign_num returns rashi sign in first house.   
-    # kundli[0].planets returns dict with all the planet information in first house.
+    # kundli[0].planets returns dict with all the planet information in first house.   
     for house in range(len(kundli)):
-        if house == 0:
+        if kundli[house].is_ascendant == True:
             print("Asc Signlon: ", kundli[house].asc_signlon)
             print("Asc minute: ", kundli[house].asc_minute)
             print("Asc sec: ", kundli[house].asc_second)
             print("Asc: {0}:{1}:{2}".format(kundli[house].asc_signlon, kundli[house].asc_minute, kundli[house].asc_second))
         print("house: {0} sign_num: {1} planet: {2}".format(house+1, kundli[house].sign_num, kundli[house].planet))
+
 ```   
 #       
 ```   
@@ -45,20 +47,22 @@ if __name__ == "__main__":
 # house: 11 sign_num: 12 planet: {'SUN': {'signlon': 15, 'minute': 36, 'second': 6, 'lon': 345.60193267617626, 'retrograde': False}, 'MERCURY': {'signlon': 14, 'minute': 35, 'second': 13, 'lon': 344.58717542538943, 'retrograde': False}, 'VENUS': {'signlon': 11, 'minute': 47, 'second': 46, 'lon': 341.7961896197394, 'retrograde': True}}
 # house: 12 sign_num: 1 planet: {}
 
-```
-
-# 
+```   
+   
+#  
+```  
 SiderealKundli.Kundli(year, month, day, hour, minute, second, 
                  utc_offset_hours, utc_offset_minutes, latitude, longitude, ayan="lahiri")   
+```
 returns a list with all the houses.   
 example:   
 kundli[0] = house 1      
-...  
+kundli[1] = house 2  
 ...   
 ...   
 kundli[11] = house 12
 
-kundli[0].sign_num returns rashi sign in first house.   
+kundli[0].sign_num returns rashi sign number in first house.   
 kundli[0].planets returns dict with all the planet information in first house.
 
 ayanamsa you can use:   
@@ -77,8 +81,13 @@ ayanamsa you can use:
 ```kundli[0].asc_second```: returns the ascendant second   
 
 ```kundli[0].sign_num```: returns sign number in the first house    
-```kundli[0].planet```:   returns dict with planet information in the first house
-
+```kundli[0].planet```:   returns dict with planet information in the first house   
+#
+``` chart.Chart```:    
+- ```chart.Chart(data.planets_rashi()).lagnaChart()```: returns Lagna Chart    
+- ```chart.Chart(data.planets_rashi()).moonChart()```: returns Moon Chart   
+#
+   
 # Installl
 ```   
 pip install SiderealKundliCraft
@@ -90,4 +99,3 @@ then cd to the folder and enter the command:
 ```   
 pip install .
 ```   
-

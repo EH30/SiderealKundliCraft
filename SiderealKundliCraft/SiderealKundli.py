@@ -38,15 +38,6 @@ class Date:
         self.utc_offset_hours   = utc_offset_hours
         self.utc_offset_minutes = utc_offset_minutes
 
-
-class DataHouse:
-    def __init__(self):
-        self.sign_num        = None
-        self.asc_signlon     = None
-        self.asc_minute      = None
-        self.asc_second      = None
-        self.planet          = {}
-
 class Kundli:
     def __init__(self, year:int, month:int, day:int, hour:int, minute:int, second:int, 
                  utc_offset_hours:int, utc_offset_minutes:int, latitude:float, longitude:float, ayan="ay_lahiri"):
@@ -70,13 +61,6 @@ class Kundli:
         self.latitude  = latitude
         self.longitude = longitude
     
-    def degree_minute_second(self, lon:float):
-        """calculate degree minute and second"""
-        deg = lon % 30
-        minutes = int((lon - int(lon)) * 60)
-        seconds = (lon - int(lon) - minutes / 60) * 3600
-        return {"signlon": int(deg), "minute": minutes, "second": int(seconds)}
-
     def planets_rashi(self):
         """calculate planet position in rashi"""
         swe.set_sid_mode(SWE_AYANAMSA[self.ayan], 0, 0)  # Set the Ayanamsa
@@ -102,33 +86,3 @@ class Kundli:
         swe.close()
         return output
     
-    def lagnaChart(self):
-        """calculate lagna chart"""
-        houses = []
-        planets = self.planets_rashi()
-        temp = planets["Asc"]["sign_num"]
-        for _ in range (0, 12):
-            if temp > 12:
-                temp = 1
-            
-            data = DataHouse()
-            data.sign_num = temp
-            houses.append(data)
-            temp += 1
-        
-        lagna = self.degree_minute_second(planets["Asc"]["lon"])
-        houses[0].asc_signlon = lagna["signlon"]
-        houses[0].asc_minute  = lagna["minute"]
-        houses[0].asc_second  = lagna["second"]
-
-        for house in range(len(houses)):
-            for planet in planets:
-                if planet == "Asc":
-                    continue
-                if planets[planet]["sign_num"] == houses[house].sign_num:
-                    temp = self.degree_minute_second(planets[planet]["lon"])
-                    houses[house].planet[planet] = temp
-                    houses[house].planet[planet]["lon"] = planets[planet]["lon"]
-                    houses[house].planet[planet]["retrograde"] = planets[planet]["retrograde"]
-        
-        return houses
