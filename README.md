@@ -98,14 +98,9 @@ ayanamsa you can use:
 
    
 ```  
-data = SiderealKundli.Kundli(year, month, day, hour, minute, second, 
-                 utc_offset_hours, utc_offset_minutes, latitude, longitude, ayan="lahiri")   
-```
-
-#    
-```
-kundli = chart.Chart(data.planets_rashi())
-kundli.lagnaChart() # returns list with all the houses in Lagna Chart
+# Example  
+data = SiderealKundli.Kundli(year, month, day, hour, minute, second, utc_hour, utc_minute, latitude, longitude, ayan="ay_lahiri")
+kundli = chart.Chart(data.planets_rashi()).lagnaChart() # returns list with all the houses in Lagna Chart
 ```
 
 # Installl
