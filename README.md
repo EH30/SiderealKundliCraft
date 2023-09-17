@@ -1,7 +1,6 @@
 # SiderealKundliCraft
-
-SidreakKundliCraft helps generate kundli.     
-SiderealKundliCraff is a simple Python package designed for astrology enthusiasts. This package empowers users to calculate Lagna Kundli (also known as birth charts) and determine planetary positions within the zodiac signs, adhering to the sidereal system.   
+     
+SiderealKundliCraft is a simple Python package designed for astrology enthusiasts. This package empowers users to calculate Lagna Kundli (also known as birth charts) and determine planetary positions within the zodiac signs, adhering to the sidereal system.   
 
 # Example
 ```
