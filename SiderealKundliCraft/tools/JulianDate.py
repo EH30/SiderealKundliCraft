@@ -4,7 +4,7 @@ class JulianDate:
     def __init__(self, date):
         self.date = date
 
-    def date_utc_to_julian(self):
+    def date_utc_to_julian(self) -> float:
         # Convert the date to a datetime object
         dt = datetime(self.date.year, self.date.month, self.date.day, self.date.hour, self.date.minute, self.date.second)
         # Calculate the Julian date offset
