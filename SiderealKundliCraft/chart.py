@@ -24,7 +24,7 @@ class Chart:
         """calculate lagna chart"""
         houses = []
         planets = self.data
-        temp = planets["Asc"]["sign_num"]
+        temp = planets["ascendant"]["sign_num"]
         for _ in range (0, 12):
             if temp > 12:
                 temp = 1
@@ -34,7 +34,7 @@ class Chart:
             houses.append(data)
             temp += 1
         
-        lagna = self.degree_minute_second(planets["Asc"]["lon"])
+        lagna = self.degree_minute_second(planets["ascendant"]["lon"])
         houses[0].is_ascendant = True
         houses[0].asc_signlon  = lagna["signlon"]
         houses[0].asc_minute   = lagna["minute"]
@@ -42,7 +42,7 @@ class Chart:
 
         for house in range(len(houses)):
             for planet in planets:
-                if planet == "Asc":
+                if planet == "ascendant":
                     continue
                 if planets[planet]["sign_num"] == houses[house].sign_num:
                     temp = self.degree_minute_second(planets[planet]["lon"])
@@ -56,20 +56,20 @@ class Chart:
         """calculate moon chart"""
         houses  = []
         planets = self.data
-        temp    = planets["MOON"]["sign_num"]
+        temp    = planets["moon"]["sign_num"]
         asc_house = 0
         for _ in range (0, 12):
             if temp > 12:
                 temp = 1
 
-            if temp == planets["Asc"]["sign_num"]:
+            if temp == planets["ascendant"]["sign_num"]:
                 asc_house = len(houses)
             data = DataHouse()
             data.sign_num = temp
             houses.append(data)
             temp += 1
         
-        lagna = self.degree_minute_second(planets["Asc"]["lon"])
+        lagna = self.degree_minute_second(planets["ascendant"]["lon"])
         houses[asc_house].is_ascendant = True
         houses[asc_house].asc_signlon  = lagna["signlon"]
         houses[asc_house].asc_minute   = lagna["minute"]
@@ -77,7 +77,7 @@ class Chart:
 
         for house in range(len(houses)):
             for planet in planets:
-                if planet == "Asc":
+                if planet == "ascendant":
                     continue
                 if planets[planet]["sign_num"] == houses[house].sign_num:
                     temp = self.degree_minute_second(planets[planet]["lon"])

@@ -69,7 +69,7 @@ class AstroData:
         cusps, ascmc = swe.houses_ex(self.juld, self.latitude, self.longitude, b'B', flags)
         ascendant = ascmc[0]
         output = {}
-        output["Asc"] = {"sign_num":int(ascendant/30)+1, "lon":ascendant}
+        output["ascendant"] = {"sign_num":int(ascendant/30)+1, "lon":ascendant}
 
         for planet in PLANETS:
             xx, ret = swe.calc_ut(self.juld, PLANETS[planet], flags)
