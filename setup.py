@@ -24,7 +24,7 @@ setup(
     description='Python package for Astrology',
     url='https://github.com/EH30/SiderealKundliCraft',
     keywords=['Astrology', 'Sidereal Astrology', "Kundli"],
-    license='UNLICENSE',
+    license='Unlicense',
     
     # Authoring
     author='EH',
