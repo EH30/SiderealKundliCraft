@@ -24,7 +24,7 @@ PLANETS = {
     "rahu": swe.MEAN_NODE,
     "uranus": swe.URANUS, 
     "pluto": swe.PLUTO,
-    "neptune": swe.NEPTUNE, 
+    "neptune": swe.NEPTUNE
 }
 
 class Date:
