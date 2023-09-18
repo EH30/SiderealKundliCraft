@@ -14,17 +14,17 @@ SWE_AYANAMSA  = {
 }
 
 PLANETS = {
-    "SUN": swe.SUN, 
-    "MOON": swe.MOON, 
-    "MERCURY": swe.MERCURY, 
-    "VENUS": swe.VENUS, 
-    "MARS": swe.MARS, 
-    "JUPITER":swe.JUPITER, 
-    "SATURN": swe.SATURN, 
-    "RAHU": swe.MEAN_NODE,
-    "URANUS": swe.URANUS, 
-    "PLUTO": swe.PLUTO,
-    "NEPTUNE": swe.NEPTUNE, 
+    "sun": swe.SUN, 
+    "moon": swe.MOON, 
+    "mercury": swe.MERCURY, 
+    "venus": swe.VENUS, 
+    "mars": swe.MARS, 
+    "jupiter":swe.JUPITER, 
+    "saturn": swe.SATURN, 
+    "rahu": swe.MEAN_NODE,
+    "uranus": swe.URANUS, 
+    "pluto": swe.PLUTO,
+    "neptune": swe.NEPTUNE, 
 }
 
 class Date:
@@ -53,7 +53,7 @@ class AstroData:
         - utc_offset_minutes: utc offset minutes example: 30
         - ayan: Ayanamsa default is lahiri.   
 
-        Example: Kundli(2009, 3, 30, 9, 30, 0, 5, 30, 19.0760, 72.8777, ayan="ay_lahiri").lagnaChart()    
+        Example: AstroData(2009, 3, 30, 9, 36, 0, 5, 30, 19.0760, 72.8777, ayan="ay_lahiri")    
         """
         date = Date(year, month, day, hour, minute, second, utc_offset_hours, utc_offset_minutes)
         self.juld = JulianDate.JulianDate(date).date_utc_to_julian()
@@ -70,7 +70,6 @@ class AstroData:
         ascendant = ascmc[0]
         output = {}
         output["Asc"] = {"sign_num":int(ascendant/30)+1, "lon":ascendant}
-        xx, ret = swe.calc_ut(self.juld, PLANETS["SUN"], flags)
 
         for planet in PLANETS:
             xx, ret = swe.calc_ut(self.juld, PLANETS[planet], flags)
@@ -79,9 +78,9 @@ class AstroData:
             if xx[3] < 0:
                 output[planet]["retrograde"] = True
         
-        output["KETU"] = {"sign_num":  int(swe.degnorm(output["RAHU"]["lon"]+180) / 30)+1 , "lon": swe.degnorm(output["RAHU"]["lon"]+180), "retrograde": False}
-        if output["RAHU"]["retrograde"] == True:
-            output["KETU"]["retrograde"] = True 
+        output["ketu"] = {"sign_num":  int(swe.degnorm(output["rahu"]["lon"]+180) / 30)+1 , "lon": swe.degnorm(output["rahu"]["lon"]+180), "retrograde": False}
+        if output["rahu"]["retrograde"] == True:
+            output["ketu"]["retrograde"] = True 
         swe.close()
         return output
     

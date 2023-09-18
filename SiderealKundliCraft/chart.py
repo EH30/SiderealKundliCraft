@@ -1,3 +1,5 @@
+from typing import List
+
 class DataHouse:
     def __init__(self):
         self.sign_num        = None
@@ -5,20 +7,20 @@ class DataHouse:
         self.asc_signlon     = None
         self.asc_minute      = None
         self.asc_second      = None
-        self.planet          = {}
+        self.planets          = {}
 
 class Chart:
     def __init__(self, data:dict) :
         self.data = data
     
-    def degree_minute_second(self, lon:float):
+    def degree_minute_second(self, lon:float) -> dict:
         """calculate degree minute and second"""
         deg = lon % 30
         minutes = int((lon - int(lon)) * 60)
         seconds = (lon - int(lon) - minutes / 60) * 3600
         return {"signlon": int(deg), "minute": minutes, "second": int(seconds)}
     
-    def lagnaChart(self):
+    def lagnaChart(self) -> List[DataHouse]:
         """calculate lagna chart"""
         houses = []
         planets = self.data
@@ -44,13 +46,13 @@ class Chart:
                     continue
                 if planets[planet]["sign_num"] == houses[house].sign_num:
                     temp = self.degree_minute_second(planets[planet]["lon"])
-                    houses[house].planet[planet] = temp
-                    houses[house].planet[planet]["lon"] = planets[planet]["lon"]
-                    houses[house].planet[planet]["retrograde"] = planets[planet]["retrograde"]
+                    houses[house].planets[planet] = temp
+                    houses[house].planets[planet]["lon"] = planets[planet]["lon"]
+                    houses[house].planets[planet]["retrograde"] = planets[planet]["retrograde"]
         
         return houses
     
-    def moonChart(self):
+    def moonChart(self) -> List[DataHouse]:
         """calculate moon chart"""
         houses  = []
         planets = self.data
@@ -79,9 +81,9 @@ class Chart:
                     continue
                 if planets[planet]["sign_num"] == houses[house].sign_num:
                     temp = self.degree_minute_second(planets[planet]["lon"])
-                    houses[house].planet[planet] = temp
-                    houses[house].planet[planet]["lon"] = planets[planet]["lon"]
-                    houses[house].planet[planet]["retrograde"] = planets[planet]["retrograde"]
+                    houses[house].planets[planet] = temp
+                    houses[house].planets[planet]["lon"] = planets[planet]["lon"]
+                    houses[house].planets[planet]["retrograde"] = planets[planet]["retrograde"]
         
         return houses
 

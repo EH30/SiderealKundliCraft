@@ -37,8 +37,7 @@ if __name__ == "__main__":
             print("Asc minute: ", kundli[house].asc_minute)
             print("Asc sec: ", kundli[house].asc_second)
             print("Asc: {0}:{1}:{2}".format(kundli[house].asc_signlon, kundli[house].asc_minute, kundli[house].asc_second))
-        print("house: {0} sign_num: {1} planet: {2}".format(house+1, kundli[house].sign_num, kundli[house].planet))
-
+        print("house: {0} sign_num: {1} planet: {2}".format(house+1, kundli[house].sign_num, kundli[house].planets))
 ```   
 #       
 ```   
@@ -47,17 +46,17 @@ if __name__ == "__main__":
 # Asc minute:  36
 # Asc sec:  23
 # Asc: 7:36:23
-# house: 1 sign_num: 2 planet: {'MOON': {'signlon': 0, 'minute': 25, 'second': 57, 'lon': 30.43269224654518, 'retrograde': False}}
+# house: 1 sign_num: 2 planet: {'moon': {'signlon': 0, 'minute': 25, 'second': 57, 'lon': 30.43269224654518, 'retrograde': False}}
 # house: 2 sign_num: 3 planet: {}
-# house: 3 sign_num: 4 planet: {'KETU': {'signlon': 12, 'minute': 18, 'second': 13, 'lon': 102.30385130530328, 'retrograde': True}}
-# house: 4 sign_num: 5 planet: {'SATURN': {'signlon': 22, 'minute': 45, 'second': 32, 'lon': 142.75898718206952, 'retrograde': True}}
+# house: 3 sign_num: 4 planet: {'ketu': {'signlon': 12, 'minute': 18, 'second': 13, 'lon': 102.30385130530328, 'retrograde': True}}
+# house: 4 sign_num: 5 planet: {'saturn': {'signlon': 22, 'minute': 45, 'second': 32, 'lon': 142.75898718206952, 'retrograde': True}}
 # house: 5 sign_num: 6 planet: {}
 # house: 6 sign_num: 7 planet: {}
 # house: 7 sign_num: 8 planet: {}
-# house: 8 sign_num: 9 planet: {'PLUTO': {'signlon': 9, 'minute': 18, 'second': 8, 'lon': 249.30237002216532, 'retrograde': False}}
-# house: 9 sign_num: 10 planet: {'JUPITER': {'signlon': 24, 'minute': 45, 'second': 57, 'lon': 294.76607252592436, 'retrograde': False}, 'RAHU': {'signlon': 12, 'minute': 18, 'second': 13, 'lon': 282.3038513053033, 'retrograde': True}}
-# house: 10 sign_num: 11 planet: {'MARS': {'signlon': 17, 'minute': 46, 'second': 46, 'lon': 317.77956968504066, 'retrograde': False}, 'URANUS': {'signlon': 29, 'minute': 35, 'second': 8, 'lon': 329.5855638533189, 'retrograde': False}, 'NEPTUNE': {'signlon': 1, 'minute': 32, 'second': 57, 'lon': 301.54936905595946, 'retrograde': False}}
-# house: 11 sign_num: 12 planet: {'SUN': {'signlon': 15, 'minute': 36, 'second': 21, 'lon': 345.6060505603411, 'retrograde': False}, 'MERCURY': {'signlon': 14, 'minute': 35, 'second': 44, 'lon': 344.59557987848166, 'retrograde': False}, 'VENUS': {'signlon': 11, 'minute': 47, 'second': 37, 'lon': 341.7936220400737, 'retrograde': True}}
+# house: 8 sign_num: 9 planet: {'pluto': {'signlon': 9, 'minute': 18, 'second': 8, 'lon': 249.30237002216532, 'retrograde': False}}
+# house: 9 sign_num: 10 planet: {'jupiter': {'signlon': 24, 'minute': 45, 'second': 57, 'lon': 294.76607252592436, 'retrograde': False}, 'rahu': {'signlon': 12, 'minute': 18, 'second': 13, 'lon': 282.3038513053033, 'retrograde': True}}
+# house: 10 sign_num: 11 planet: {'mars': {'signlon': 17, 'minute': 46, 'second': 46, 'lon': 317.77956968504066, 'retrograde': False}, 'uranus': {'signlon': 29, 'minute': 35, 'second': 8, 'lon': 329.5855638533189, 'retrograde': False}, 'neptune': {'signlon': 1, 'minute': 32, 'second': 57, 'lon': 301.54936905595946, 'retrograde': False}}
+# house: 11 sign_num: 12 planet: {'sun': {'signlon': 15, 'minute': 36, 'second': 21, 'lon': 345.6060505603411, 'retrograde': False}, 'mercury': {'signlon': 14, 'minute': 35, 'second': 44, 'lon': 344.59557987848166, 'retrograde': False}, 'venus': {'signlon': 11, 'minute': 47, 'second': 37, 'lon': 341.7936220400737, 'retrograde': True}}
 # house: 12 sign_num: 1 planet: {}
 
 ```   
@@ -84,12 +83,11 @@ ayanamsa you can use:
 "ay_galcenter_5sag"      
    
 # 
+```kundli[0].sign_num```: returns sign number in the first house    
 ```kundli[0].asc_signlon```: returns the ascendant degree    
 ```kundli[0].asc_minute```: returns the ascendant minute    
 ```kundli[0].asc_second```: returns the ascendant second   
-
-```kundli[0].sign_num```: returns sign number in the first house    
-```kundli[0].planet```:   returns dict with planet information in the first house   
+```kundli[0].planets```:   returns dict with planet information in the first house   
 #
 ``` chart.Chart```:    
 - ```chart.Chart(data.planets_rashi()).lagnaChart()```: returns Lagna Chart    
