@@ -61,7 +61,7 @@ class AstroData:
         self.latitude  = latitude
         self.longitude = longitude
     
-    def planets_rashi(self):
+    def planets_rashi(self) -> dict:
         """calculate planet position in rashi"""
         swe.set_sid_mode(SWE_AYANAMSA[self.ayan], 0, 0)  # Set the Ayanamsa
         flags = swe.FLG_SWIEPH + swe.FLG_SPEED + swe.FLG_SIDEREAL
