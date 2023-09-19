@@ -9,7 +9,7 @@ with open("README.md", "r") as opn:
 setup(
     # Project
     name='SiderealKundliCraft',
-    version='3.0.1',
+    version='4.0.0',
     
     # Sources
     packages=find_packages(),
@@ -23,7 +23,7 @@ setup(
     long_description_content_type="text/markdown",
     description='Python package for Astrology',
     url='https://github.com/EH30/SiderealKundliCraft',
-    keywords=['Astrology', 'Sidereal Astrology', "Kundli"],
+    keywords=['Astrology', 'Sidereal Astrology', "Kundli", "Sidereal", "Tools", "Chart"],
     license='Unlicense',
     
     # Authoring

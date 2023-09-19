@@ -1,5 +1,23 @@
 from SiderealKundliCraft import SiderealAstroData, chart
 
+def degree_minute_second_st(deg, minute, second):
+    new_deg = ""
+    new_min = ""
+    new_sec = ""
+    if int(deg) < 10:
+        new_deg = "0"+str(int(deg))
+    else:
+        new_deg = str(int(deg))
+    if int(minute) < 10:
+        new_min = "0"+str(int(minute))
+    else:
+        new_min = str(int(minute))
+    if int(second) < 10:
+        new_sec = "0"+str(int(second))
+    else:
+        new_sec = str(int(second))
+    return str(new_deg+":"+new_min+":"+new_sec)
+
 if __name__ == "__main__":
     # Example UTC: +5:30 which is used by India
     # Example Location Mumbai India latitude: 19.0760 and Longitude: 72.8777 
@@ -17,18 +35,5 @@ if __name__ == "__main__":
     ayanamsa = "ay_lahiri"
     data = SiderealAstroData.AstroData(year, month, day, hour, minute, second, utc_hour, utc_minute, latitude, longitude, ayan=ayanamsa)
     kundli = chart.Chart(data.planets_rashi()).lagnaChart() # returns list with all the houses in Lagna Chart
-    # kundli[0] = house 1      
-    # kundli[1] = house 2   
-    # ...   
-    # ...   
-    # kundli[11] = house 12
-
-    # kundli[0].sign_num returns rashi sign in first house.   
-    # kundli[0].planets returns dict with all the planet information in first house.   
-    for house in range(len(kundli)):
-        if kundli[house].is_ascendant == True:
-            print("Asc Signlon: ", kundli[house].asc_signlon)
-            print("Asc minute: ", kundli[house].asc_minute)
-            print("Asc sec: ", kundli[house].asc_second)
-            print("Asc: ", kundli[house].asc_degree)
-        print("house: {0} sign_num: {1} planet: {2}".format(house+1, kundli[house].sign_num, kundli[house].planets))
+    deg_min_sec= degree_minute_second_st(kundli[0].asc_signlon, kundli[0].asc_minute, kundli[0].asc_second)
+    print(deg_min_sec)
