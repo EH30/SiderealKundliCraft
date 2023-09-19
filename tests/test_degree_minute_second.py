@@ -33,7 +33,7 @@ if __name__ == "__main__":
     latitude = 19.0760
     longitude =  72.8777
     ayanamsa = "ay_lahiri"
-    data = SiderealAstroData.AstroData(year, month, day, hour, minute, second, utc_hour, utc_minute, latitude, longitude, ayan=ayanamsa)
+    data = SiderealAstroData.AstroData(year, month, day, hour, minute, second, utc_hour, utc_minute, latitude, longitude, ayanamsa=ayanamsa)
     kundli = chart.Chart(data.planets_rashi()).lagnaChart() # returns list with all the houses in Lagna Chart
     deg_min_sec= degree_minute_second_st(kundli[0].asc_signlon, kundli[0].asc_minute, kundli[0].asc_second)
     print(deg_min_sec)

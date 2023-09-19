@@ -40,7 +40,7 @@ class Date:
 
 class AstroData:
     def __init__(self, year:int, month:int, day:int, hour:int, minute:int, second:int, 
-                 utc_offset_hours:int, utc_offset_minutes:int, latitude:float, longitude:float, ayan="ay_lahiri"):
+                 utc_offset_hours:int, utc_offset_minutes:int, latitude:float, longitude:float, ayanamsa="ay_lahiri"):
         """   
         arguments: 
         - year: birth year
@@ -53,11 +53,11 @@ class AstroData:
         - utc_offset_minutes: utc offset minutes example: 30
         - ayan: Ayanamsa default is lahiri.   
 
-        Example: AstroData(2009, 3, 30, 9, 36, 0, 5, 30, 19.0760, 72.8777, ayan="ay_lahiri")    
+        Example: AstroData(2009, 3, 30, 9, 36, 0, 5, 30, 19.0760, 72.8777, ayanamsa="ay_lahiri")    
         """
         date = Date(year, month, day, hour, minute, second, utc_offset_hours, utc_offset_minutes)
         self.juld = JulianDate.JulianDate(date).date_utc_to_julian()
-        self.ayan = ayan.lower()
+        self.ayan = ayanamsa.lower()
         self.latitude  = latitude
         self.longitude = longitude
     
