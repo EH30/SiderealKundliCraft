@@ -57,13 +57,32 @@ class AstroData:
         """
         date = Date(year, month, day, hour, minute, second, utc_offset_hours, utc_offset_minutes)
         self.juld = JulianDate.JulianDate(date).date_utc_to_julian()
-        self.ayan = ayanamsa.lower()
+        self.ayanamsa = ayanamsa.lower()
         self.latitude  = latitude
         self.longitude = longitude
     
+    def get_chiron_rashi(self, swefiles) -> dict:
+        """
+        arguments:
+        - swefiles: enter path to swisseph files for chiron      
+
+        Example: get_chiron('resources/swefiles')    
+        """
+        output = {}
+        planet = "chiron"
+        swe.set_ephe_path(swefiles)
+        swe.set_sid_mode(SWE_AYANAMSA[self.ayanamsa], 0, 0)  # Set the Ayanamsa
+        flags = swe.FLG_SWIEPH + swe.FLG_SPEED + swe.FLG_SIDEREAL        
+        xx, ret = swe.calc_ut(self.juld, swe.CHIRON, flags)
+        rashi_number = xx[0] / 30 
+        output[planet] = {"sign_num":int(rashi_number)+1, "lon": xx[0], "retrograde": False}
+        if xx[3] < 0:
+            output["planet"]["retrograde"] = True
+        return output
+    
     def planets_rashi(self) -> dict:
         """calculate planet position in rashi"""
-        swe.set_sid_mode(SWE_AYANAMSA[self.ayan], 0, 0)  # Set the Ayanamsa
+        swe.set_sid_mode(SWE_AYANAMSA[self.ayanamsa], 0, 0)  # Set the Ayanamsa
         flags = swe.FLG_SWIEPH + swe.FLG_SPEED + swe.FLG_SIDEREAL
 
         cusps, ascmc = swe.houses_ex(self.juld, self.latitude, self.longitude, b'B', flags)
