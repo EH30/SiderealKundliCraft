@@ -4,7 +4,7 @@ SiderealKundliCraft is a simple Python package designed for astrology enthusiast
 
 # Example
 ```
-from SiderealKundliCraft import SiderealAstroData, chart
+from SiderealKundliCraft import AstroChart, SiderealAstroData
 
 if __name__ == "__main__":
     # Example UTC: +5:30 which is used by India
@@ -22,7 +22,7 @@ if __name__ == "__main__":
     longitude =  72.8777
     ayanamsa = "ay_lahiri"
     data = SiderealAstroData.AstroData(year, month, day, hour, minute, second, utc_hour, utc_minute, latitude, longitude, ayanamsa=ayanamsa)
-    kundli = chart.Chart(data.planets_rashi()).lagnaChart() # returns list with all the houses in Lagna Chart
+    kundli = AstroChart.Chart(data.planets_rashi()).lagnaChart() # returns list with all the houses in Lagna Chart
     # kundli[0] = house 1      
     # kundli[1] = house 2   
     # ...   
@@ -91,16 +91,19 @@ ayanamsa you can use:
 ```kundli[0].asc_degree```: returns the ascendant degree   
 ```kundli[0].planets```:   returns dict with planet information in the first house   
 #
-``` chart.Chart```:    
-- ```chart.Chart(data.planets_rashi()).lagnaChart()```: returns Lagna Chart    
-- ```chart.Chart(data.planets_rashi()).moonChart()```: returns Moon Chart   
+```AstroChart.Chart```:    
+- ```AstroChart.Chart(data.planets_rashi()).lagnaChart()```: returns Lagna Chart    
+- ```AstroChart.Chart(data.planets_rashi()).moonChart()```: returns Moon Chart   
 #
-   
+```SiderealAstroData.AstroData```:
+- ```SiderealAstroData.AstroData(year, month, day, hour, minute, second, utc_hour, utc_minute, latitude, longitude, ayanamsa=ayanamsa).planets_rashi()```:returns dict with planets information
+- ```SiderealAstroData.AstroData(year, month, day, hour, minute, second, utc_hour, utc_minute, latitude, longitude, ayanamsa=ayanamsa).get_chiron_rashi("resources\swefiles")```: returns dict with chiron information
    
 ```   
 # Example  
 data = SiderealAstroData.AstroData(year, month, day, hour, minute, second, utc_hour, utc_minute, latitude, longitude, ayanamsa=ayanamsa)
-kundli = chart.Chart(data.planets_rashi()).lagnaChart() # returns list with all the houses in Lagna Chart
+data.get_chiron_rashi("resources\swefiles") # returns dict with chiron information
+kundli = AstroChart.Chart(data.planets_rashi()).lagnaChart() # returns list with all the houses in Lagna Chart
 ```   
 
 
