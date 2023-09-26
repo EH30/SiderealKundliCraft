@@ -1,5 +1,11 @@
 # SiderealKundliCraft
-     
+
+This package was replaced by: sideralib   
+sideralib github page: https://github.com/EH30/sideralib   
+sideralib pypi page: https://pypi.org/project/sideralib/   
+   
+
+
 SiderealKundliCraft is a simple Python package designed for astrology enthusiasts. This package empowers users to calculate charts and determine planetary positions within the zodiac signs, adhering to the sidereal system.   
 
 # Example
